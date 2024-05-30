@@ -31,6 +31,13 @@ void PecanEditorWindow::resizeGL(int w, int h) {
 	glViewport(0, 0, w, h);
 }
 
+float PecanEditorWindow::getTime() const {
+	const std::chrono::high_resolution_clock::time_point currentTime = std::chrono::high_resolution_clock::now();
+	const long long elapsedMilliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - startTime).count();
+	const float elapsedSeconds = float(elapsedMilliseconds) / 1000.0f;
+	return elapsedSeconds;
+}
+
 void PecanEditorWindow::setupTriangle() {
 	// Create and bind vertex array
 	glCreateVertexArrays(1, &vertexArrayObjectID);
