@@ -1,5 +1,5 @@
 #include "PecanEditorWindow.h"
-#include "PecanEditorControlsDialog.h"
+#include "PecanEditorControls/PecanEditorControlsDialog.h"
 #include <QtWidgets/QApplication>
 
 // TODO: read from config
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     editorWindow.setFramePosition(QPoint(WINDOW_POSITION_X, WINDOW_POSITION_Y));
     editorWindow.show();
 
-    PecanEditorControlsDialog editorControlsDialog;
+    PecanEditorControlsDialog editorControlsDialog(&editorWindow);
     editorControlsDialog.resize(CONTROLS_WIDTH, WINDOW_HEIGHT);
     editorControlsDialog.move(WINDOW_WIDTH + WINDOW_POSITION_X, WINDOW_POSITION_Y);
     editorControlsDialog.show();
