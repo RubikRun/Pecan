@@ -1,5 +1,7 @@
 #pragma once
 
+#include "DemoScenes/DemoScene00_Triangle.h"
+
 #include <QtOpenGL/QOpenGLWindow>
 #include <QOpenGLFunctions_4_5_Core>
 
@@ -27,13 +29,10 @@ namespace Pecan {
         /// Returns the currently elapsed time in seconds, since the construction of this class
         float getTime() const;
 
-        void setupTriangle();
-
     private: /* variables */
-        GLuint vertexArrayObjectID = 0;
-        GLuint vertexBufferObjectID = 0;
-
         std::chrono::high_resolution_clock::time_point startTime;
+
+        DemoScene00_Triangle demoScene;
     };
 
 } // namespace Pecan

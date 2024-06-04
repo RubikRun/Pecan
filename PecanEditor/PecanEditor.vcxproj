@@ -93,6 +93,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtMoc Include="EditorWindow.h" />
+    <ClCompile Include="DemoScenes\DemoScene00_Triangle.cpp" />
     <ClCompile Include="EditorControls\EditorControlsDialog.cpp" />
     <ClCompile Include="EditorControls\EditorMainPage.cpp" />
     <ClCompile Include="EditorWindow.cpp" />
@@ -101,6 +102,8 @@
   <ItemGroup>
     <QtMoc Include="EditorControls\EditorControlsDialog.h" />
     <QtMoc Include="EditorControls\EditorMainPage.h" />
+    <ClInclude Include="DemoScenes\DemoScene00_Triangle.h" />
+    <ClInclude Include="DemoScenes\IDemoScene.h" />
     <ClInclude Include="PecanLogger.h" />
   </ItemGroup>
   <ItemGroup>

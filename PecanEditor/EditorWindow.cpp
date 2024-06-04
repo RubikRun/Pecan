@@ -7,6 +7,7 @@ namespace Pecan {
 
 	EditorWindow::EditorWindow(QWidget* parent)
 		: startTime(std::chrono::high_resolution_clock::now())
+		, demoScene(this)
 	{
 		// Specify an OpenGL version
 		QSurfaceFormat format;
@@ -17,7 +18,7 @@ namespace Pecan {
 
 	EditorWindow::~EditorWindow()
 	{
-		glDeleteVertexArrays(1, &vertexArrayObjectID);
+		demoScene.cleanup();
 	}
 
 	void EditorWindow::initializeGL() {
@@ -27,7 +28,7 @@ namespace Pecan {
 		PECAN_LOG_INFO("OpenGL Version: " << glGetString(GL_VERSION));
 		PECAN_LOG_INFO("OpenGL Renderer: " << glGetString(GL_RENDERER));
 
-		setupTriangle();
+		demoScene.setup();
 	}
 
 	void EditorWindow::resizeGL(int w, int h) {
@@ -41,33 +42,8 @@ namespace Pecan {
 		return elapsedSeconds;
 	}
 
-	void EditorWindow::setupTriangle() {
-		// Create and bind vertex array
-		glCreateVertexArrays(1, &vertexArrayObjectID);
-		glBindVertexArray(vertexArrayObjectID);
-		// Create and bind vertex buffer
-		glGenBuffers(1, &vertexBufferObjectID);
-		glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjectID);
-		// Data of triangle's vertices
-		const GLfloat vertices[3 * 3] = {
-			-0.5f, -0.5f, 0.0f,
-			+0.5f, -0.5f, 0.0f,
-			+0.0f, +0.5f, 0.0f
-		};
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-		// Declare position attribute
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), reinterpret_cast<GLvoid*>(0));
-		// Enable position attribute
-		glEnableVertexAttribArray(0);
-		// Unbind vertex array
-		glBindVertexArray(0);
-	}
-
 	void EditorWindow::paintGL() {
-		// Draw triangle
-		glBindVertexArray(vertexArrayObjectID);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
-		glBindVertexArray(0);
+		demoScene.draw();
 		// Manually call update() so that paintGL() is immediately called again
 		update();
 	}
