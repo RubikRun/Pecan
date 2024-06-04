@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PecanEditorMainPageClass</class>
- <widget class="QWidget" name="PecanEditorMainPageClass">
+ <class>EditorMainPageClass</class>
+ <widget class="QWidget" name="EditorMainPageClass">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>PecanEditorMainPage</string>
+   <string>EditorMainPage</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">

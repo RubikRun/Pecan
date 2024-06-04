@@ -23,13 +23,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="PecanEditorWindow.h">
+    <QtMoc Include="EditorWindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <ClCompile Include="PecanEditorWindow.cpp">
+    <ClCompile Include="EditorWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <QtMoc Include="PecanEditorControlsDialog.h">
+    <QtMoc Include="EditorControls\EditorControlsDialog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="EditorControls\EditorMainPage.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -37,7 +40,10 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PecanEditorControlsDialog.cpp">
+    <ClCompile Include="EditorControls\EditorControlsDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorControls\EditorMainPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,7 +53,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="PecanEditorControlsDialog.ui">
+    <QtUic Include="EditorControlsDialog.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="EditorControls\EditorMainPage.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

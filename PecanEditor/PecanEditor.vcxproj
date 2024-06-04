@@ -92,20 +92,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <QtMoc Include="PecanEditorWindow.h" />
-    <ClCompile Include="PecanEditorControls\PecanEditorControlsDialog.cpp" />
-    <ClCompile Include="PecanEditorControls\PecanEditorMainPage.cpp" />
-    <ClCompile Include="PecanEditorWindow.cpp" />
+    <QtMoc Include="EditorWindow.h" />
+    <ClCompile Include="EditorControls\EditorControlsDialog.cpp" />
+    <ClCompile Include="EditorControls\EditorMainPage.cpp" />
+    <ClCompile Include="EditorWindow.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="PecanEditorControls\PecanEditorControlsDialog.h" />
-    <QtMoc Include="PecanEditorControls\PecanEditorMainPage.h" />
+    <QtMoc Include="EditorControls\EditorControlsDialog.h" />
+    <QtMoc Include="EditorControls\EditorMainPage.h" />
     <ClInclude Include="PecanLogger.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="PecanEditorControlsDialog.ui" />
-    <QtUic Include="PecanEditorControls\PecanEditorMainPage.ui" />
+    <QtUic Include="EditorControlsDialog.ui" />
+    <QtUic Include="EditorControls\EditorMainPage.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
