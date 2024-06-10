@@ -53,7 +53,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="EditorControlsDialog.ui">
+    <QtUic Include="EditorControls\EditorControlsDialog.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="EditorControls\EditorMainPage.ui">

@@ -107,7 +107,7 @@
     <ClInclude Include="PecanLogger.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="EditorControlsDialog.ui" />
+    <QtUic Include="EditorControls\EditorControlsDialog.ui" />
     <QtUic Include="EditorControls\EditorMainPage.ui" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
