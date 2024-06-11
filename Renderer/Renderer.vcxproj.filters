@@ -23,47 +23,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="EditorWindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="EditorWindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <QtMoc Include="EditorControls\EditorControlsDialog.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="EditorControls\EditorMainPage.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EditorControls\EditorControlsDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EditorControls\EditorMainPage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DemoScenes\DemoScene00_Triangle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="DemoScenes\DemoScene00_Triangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DemoScenes\IDemoScene.h">
+    <ClInclude Include="Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="EditorControls\EditorControlsDialog.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="EditorControls\EditorMainPage.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

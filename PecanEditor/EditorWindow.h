@@ -3,8 +3,6 @@
 #include "DemoScenes/DemoScene00_Triangle.h"
 
 #include <QtOpenGL/QOpenGLWindow>
-#include <QOpenGLFunctions_4_5_Core>
-
 #include <chrono>
 
 namespace Pecan {
@@ -13,7 +11,7 @@ namespace Pecan {
     /// It's a Qt window used for rendering OpenGL graphics.
     /// This window contains only the graphics part of the editor
     /// and it should be used together with EditorControlsDialog.
-    class EditorWindow : public QOpenGLWindow, private QOpenGLFunctions_4_5_Core
+    class EditorWindow : public QOpenGLWindow
     {
         Q_OBJECT
 

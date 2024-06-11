@@ -1,42 +1,40 @@
 #include "DemoScene00_Triangle.h"
 
-namespace Pecan {
+#include "Renderer.h"
 
-	DemoScene00_Triangle::DemoScene00_Triangle(QOpenGLFunctions_4_5_Core* openGL)
-		: openGL(openGL)
-	{}
+namespace Pecan {
 
 	void DemoScene00_Triangle::setup() {
 		// Create and bind vertex array
-		openGL->glCreateVertexArrays(1, &vertexArrayObjectID);
-		openGL->glBindVertexArray(vertexArrayObjectID);
+		Renderer::createVertexArrays(1, &vertexArrayObjectID);
+		Renderer::bindVertexArray(vertexArrayObjectID);
 		// Create and bind vertex buffer
-		openGL->glGenBuffers(1, &vertexBufferObjectID);
-		openGL->glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjectID);
+		Renderer::genBuffers(1, &vertexBufferObjectID);
+		Renderer::bindBuffer(GL_ARRAY_BUFFER, vertexBufferObjectID);
 		// Data of triangle's vertices
 		const GLfloat vertices[3 * 3] = {
 			-0.5f, -0.5f, 0.0f,
 			+0.5f, -0.5f, 0.0f,
 			+0.0f, +0.5f, 0.0f
 		};
-		openGL->glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		Renderer::bufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 		// Declare position attribute
-		openGL->glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat), reinterpret_cast<GLvoid*>(0));
+		Renderer::vertexAttribPointer(0, 3, GL_FLOAT, false, 3 * sizeof(GLfloat), 0);
 		// Enable position attribute
-		openGL->glEnableVertexAttribArray(0);
+		Renderer::enableVertexAttribArray(0);
 		// Unbind vertex array
-		openGL->glBindVertexArray(0);
+		Renderer::bindVertexArray(0);
 	}
 
 	void DemoScene00_Triangle::draw() {
 		// Draw triangle
-		openGL->glBindVertexArray(vertexArrayObjectID);
-		openGL->glDrawArrays(GL_TRIANGLES, 0, 3);
-		openGL->glBindVertexArray(0);
+		Renderer::bindVertexArray(vertexArrayObjectID);
+		Renderer::drawArrays(GL_TRIANGLES, 0, 3);
+		Renderer::bindVertexArray(0);
 	}
 
 	void DemoScene00_Triangle::cleanup() {
-		openGL->glDeleteVertexArrays(1, &vertexArrayObjectID);
+		Renderer::deleteVertexArrays(1, &vertexArrayObjectID);
 	}
 
 } // namespace Pecan
