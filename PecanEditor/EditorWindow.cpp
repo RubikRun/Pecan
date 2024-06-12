@@ -1,5 +1,4 @@
 #include "EditorWindow.h"
-#include "Renderer.h"
 
 #include <QOpenGLContext>
 
@@ -21,14 +20,16 @@ namespace Pecan {
 	}
 
 	void EditorWindow::initializeGL() {
+		// Retrieve the Renderer instance, initializing OpenGL functions
+		renderer = Renderer::getInstance();
 		// Log OpenGL info
 		Renderer::logOpenGLInfo();
-
+		// Setup demo scene
 		demoScene.setup();
 	}
 
 	void EditorWindow::resizeGL(int w, int h) {
-		Renderer::setViewport(0, 0, w, h);
+		renderer->glViewport(0, 0, w, h);
 	}
 
 	float EditorWindow::getTime() const {
@@ -39,7 +40,8 @@ namespace Pecan {
 	}
 
 	void EditorWindow::paintGL() {
-		demoScene.draw();
+		// Draw demo scene
+		demoScene.draw(getTime());
 		// Manually call update() so that paintGL() is immediately called again
 		update();
 	}

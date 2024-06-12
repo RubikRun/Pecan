@@ -1,6 +1,8 @@
 #pragma once
 
 #include "DemoScenes/DemoScene00_Triangle.h"
+#include "DemoScenes/DemoScene01_TriangleMovingColored.h"
+#include "Renderer.h"
 
 #include <QtOpenGL/QOpenGLWindow>
 #include <chrono>
@@ -28,9 +30,13 @@ namespace Pecan {
         float getTime() const;
 
     private: /* variables */
+        /// Time when the editor window was opened.
+        /// Used to calculate elapsed time at any given moment.
         std::chrono::high_resolution_clock::time_point startTime;
-
-        DemoScene00_Triangle demoScene;
+        /// Pointer to the Renderer instance
+        Renderer* renderer = nullptr;
+        /// Demo scene to be rendered
+        DemoScene01_TriangleMovingColored demoScene;
     };
 
 } // namespace Pecan

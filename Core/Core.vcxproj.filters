@@ -18,5 +18,13 @@
     <ClInclude Include="PecanLogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FileUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FileUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

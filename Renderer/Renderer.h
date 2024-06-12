@@ -6,7 +6,7 @@
 namespace Pecan {
 
 	/// Renderer is a thread-safe singleton class responsible for all OpenGL calls
-	class Renderer : private QOpenGLFunctions_4_5_Core
+	class Renderer : public QOpenGLFunctions_4_5_Core
 	{
 	public:
 		/// Returns the only instance of Renderer.
@@ -16,22 +16,20 @@ namespace Pecan {
 		Renderer(Renderer& other) = delete;
 		void operator=(const Renderer&) = delete;
 
-		// ----- general -----
+		/// Logs info about OpenGL version, vendor, etc.
 		static void logOpenGLInfo();
-		static void setViewport(int x, int y, int width, int height);
-		// ----- vertex array -----
-		static void createVertexArrays(int n, unsigned* arrays);
-		static void deleteVertexArrays(int n, const unsigned* arrays);
-		static void bindVertexArray(unsigned array);
-		// ----- buffer -----
-		static void genBuffers(int n, unsigned* buffers);
-		static void bindBuffer(GLenum target, unsigned buffer);
-		static void bufferData(GLenum target, long long size, const void* data, GLenum usage);
-		// ----- vertex attribute -----
-		static void vertexAttribPointer(unsigned index, int size, GLenum type, bool normalized, int stride, long long offset);
-		static void enableVertexAttribArray(unsigned index);
-		// ----- draw -----
-		static void drawArrays(GLenum mode, int first, int count);
+
+		/// Compiles given shader's source code.
+		/// @param shaderType - Specifies the type of shader to be compiled
+		/// @param source - Source code of the shader
+		/// @return Compiled shader's ID
+		static unsigned compileShader(GLenum shaderType, const char* sourceCode);
+
+		/// Creates a shader program from given source code of shaders.
+		/// @param vertexShaderSource - Source code of the vertex shader to be compiled and used in the program
+		/// @param fragmentShaderSource - Source code of the fragment shader to be compiled and used in the program
+		/// @return Created shader program's ID
+		static unsigned createShaderProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
 
 	private:
 		// Constructor and destructor must be private so that Renderer cannot be instantiated from outside

@@ -69,7 +69,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Renderer.lib;Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -78,7 +78,7 @@
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>Renderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Renderer.lib;Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
@@ -112,6 +112,7 @@
   <ItemGroup>
     <QtMoc Include="EditorWindow.h" />
     <ClCompile Include="DemoScenes\DemoScene00_Triangle.cpp" />
+    <ClCompile Include="DemoScenes\DemoScene01_TriangleMovingColored.cpp" />
     <ClCompile Include="EditorControls\EditorControlsDialog.cpp" />
     <ClCompile Include="EditorControls\EditorMainPage.cpp" />
     <ClCompile Include="EditorWindow.cpp" />
@@ -121,11 +122,16 @@
     <QtMoc Include="EditorControls\EditorControlsDialog.h" />
     <QtMoc Include="EditorControls\EditorMainPage.h" />
     <ClInclude Include="DemoScenes\DemoScene00_Triangle.h" />
+    <ClInclude Include="DemoScenes\DemoScene01_TriangleMovingColored.h" />
     <ClInclude Include="DemoScenes\IDemoScene.h" />
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="EditorControls\EditorControlsDialog.ui" />
     <QtUic Include="EditorControls\EditorMainPage.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DemoScenes\Shaders\DemoScene01_fragment.shader" />
+    <None Include="DemoScenes\Shaders\DemoScene01_vertex.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

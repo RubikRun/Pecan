@@ -24,61 +24,47 @@ namespace Pecan {
 		PECAN_LOG_INFO("OpenGL Renderer: " << renderer->glGetString(GL_RENDERER));
 	}
 
-	void Renderer::setViewport(int x, int y, int width, int height)
+	unsigned Renderer::compileShader(GLenum shaderType, const char* sourceCode)
 	{
-		Renderer::getInstance()->glViewport(GLint(x), GLint(y), GLsizei(width), GLsizei(height));
+		Renderer* renderer = Renderer::getInstance();
+		const GLuint shaderID = renderer->glCreateShader(shaderType);
+		renderer->glShaderSource(shaderID, 1, &sourceCode, nullptr);
+		renderer->glCompileShader(shaderID);
+
+		GLint success;
+		renderer->glGetShaderiv(shaderID, GL_COMPILE_STATUS, &success);
+		if (!success) {
+			char infoLog[512];
+			renderer->glGetShaderInfoLog(shaderID, 512, nullptr, infoLog);
+			PECAN_LOG_ERROR("Shader compilation failed: " << infoLog);
+		}
+		return shaderID;
 	}
 
-	void Renderer::createVertexArrays(int n, unsigned* arrays)
+	unsigned Renderer::createShaderProgram(const char* vertexShaderSource, const char* fragmentShaderSource)
 	{
-		Renderer::getInstance()->glCreateVertexArrays(n, arrays);
-	}
+		Renderer* renderer = Renderer::getInstance();
+		// Compile shaders
+		const GLuint vertexShaderID = compileShader(GL_VERTEX_SHADER, vertexShaderSource);
+		const GLuint fragmentShaderID = compileShader(GL_FRAGMENT_SHADER, fragmentShaderSource);
+		// Create program, attach shaders to it, and link it
+		const GLuint programID = renderer->glCreateProgram();
+		renderer->glAttachShader(programID, vertexShaderID);
+		renderer->glAttachShader(programID, fragmentShaderID);
+		renderer->glLinkProgram(programID);
+		// Check if program linked successfully
+		GLint success;
+		renderer->glGetProgramiv(programID, GL_LINK_STATUS, &success);
+		if (!success) {
+			char infoLog[512];
+			renderer->glGetProgramInfoLog(programID, 512, nullptr, infoLog);
+			PECAN_LOG_ERROR("Program linking failed: " << infoLog);
+		}
+		// Delete the shaders as the program has them now
+		renderer->glDeleteShader(vertexShaderID);
+		renderer->glDeleteShader(fragmentShaderID);
 
-	void Renderer::bindVertexArray(unsigned array)
-	{
-		Renderer::getInstance()->glBindVertexArray(array);
-	}
-
-	void Renderer::genBuffers(int n, unsigned* buffers)
-	{
-		Renderer::getInstance()->glGenBuffers(n, buffers);
-	}
-
-	void Renderer::bindBuffer(GLenum target, unsigned buffer)
-	{
-		Renderer::getInstance()->glBindBuffer(target, buffer);
-	}
-
-	void Renderer::bufferData(GLenum target, long long size, const void* data, GLenum usage)
-	{
-		Renderer::getInstance()->glBufferData(target, size, data, usage);
-	}
-
-	void Renderer::vertexAttribPointer(unsigned index, int size, GLenum type, bool normalized, int stride, long long offset)
-	{
-		Renderer::getInstance()->glVertexAttribPointer(
-			index,
-			size,
-			type,
-			normalized ? GL_TRUE : GL_FALSE,
-			stride,
-			reinterpret_cast<GLvoid*>(offset)
-		);
-	}
-
-	void Renderer::enableVertexAttribArray(unsigned index)
-	{
-		Renderer::getInstance()->glEnableVertexAttribArray(index);
-	}
-
-	void Renderer::drawArrays(GLenum mode, int first, int count)
-	{
-		Renderer::getInstance()->glDrawArrays(mode, first, count);
-	}
-
-	void Renderer::deleteVertexArrays(int n, const unsigned* arrays)
-	{
-		Renderer::getInstance()->glDeleteVertexArrays(n, arrays);
+		return programID;
 	}
 
 	Renderer::Renderer()

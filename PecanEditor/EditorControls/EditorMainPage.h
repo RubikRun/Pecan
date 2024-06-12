@@ -22,7 +22,7 @@ namespace Pecan {
 		/// The editor should listen to this signal and handle it by closing itself.
 		void exitSignal();
 
-	private: /* functions */
+	private slots:
 		void onExitButtonPressed();
 
 	private: /* variables */

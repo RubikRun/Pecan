@@ -4,37 +4,33 @@
 
 namespace Pecan {
 
-	void DemoScene00_Triangle::setup() {
+	void DemoScene00_Triangle::_setup() {
 		// Create and bind vertex array
-		Renderer::createVertexArrays(1, &vertexArrayObjectID);
-		Renderer::bindVertexArray(vertexArrayObjectID);
+		renderer->glCreateVertexArrays(1, &vertexArrayObjectID);
+		renderer->glBindVertexArray(vertexArrayObjectID);
 		// Create and bind vertex buffer
-		Renderer::genBuffers(1, &vertexBufferObjectID);
-		Renderer::bindBuffer(GL_ARRAY_BUFFER, vertexBufferObjectID);
+		renderer->glGenBuffers(1, &vertexBufferObjectID);
+		renderer->glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjectID);
 		// Data of triangle's vertices
 		const GLfloat vertices[3 * 3] = {
 			-0.5f, -0.5f, 0.0f,
 			+0.5f, -0.5f, 0.0f,
 			+0.0f, +0.5f, 0.0f
 		};
-		Renderer::bufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		renderer->glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 		// Declare position attribute
-		Renderer::vertexAttribPointer(0, 3, GL_FLOAT, false, 3 * sizeof(GLfloat), 0);
+		renderer->glVertexAttribPointer(0, 3, GL_FLOAT, false, 3 * sizeof(GLfloat), 0);
 		// Enable position attribute
-		Renderer::enableVertexAttribArray(0);
-		// Unbind vertex array
-		Renderer::bindVertexArray(0);
+		renderer->glEnableVertexAttribArray(0);
 	}
 
-	void DemoScene00_Triangle::draw() {
+	void DemoScene00_Triangle::draw(float time) {
 		// Draw triangle
-		Renderer::bindVertexArray(vertexArrayObjectID);
-		Renderer::drawArrays(GL_TRIANGLES, 0, 3);
-		Renderer::bindVertexArray(0);
+		renderer->glDrawArrays(GL_TRIANGLES, 0, 3);
 	}
 
 	void DemoScene00_Triangle::cleanup() {
-		Renderer::deleteVertexArrays(1, &vertexArrayObjectID);
+		renderer->glDeleteVertexArrays(1, &vertexArrayObjectID);
 	}
 
 } // namespace Pecan

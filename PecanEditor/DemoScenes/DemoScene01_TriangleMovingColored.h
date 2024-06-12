@@ -1,11 +1,11 @@
 #pragma once
 
-#include "IDemoScene.h"
+#include "DemoScenes/IDemoScene.h"
 
 namespace Pecan {
 
-	/// Demo scene that renders a single white triangle in the middle of the screen.
-	class DemoScene00_Triangle : public IDemoScene
+	/// Demo scene that renders a single colored triangle that moves around and changes color.
+	class DemoScene01_TriangleMovingColored : public IDemoScene
 	{
 		void _setup() override;
 	public:
@@ -14,6 +14,7 @@ namespace Pecan {
 	private:
 		unsigned vertexArrayObjectID = 0;
 		unsigned vertexBufferObjectID = 0;
+		unsigned shaderProgramID = 0;
 	};
 
 } // namespace Pecan

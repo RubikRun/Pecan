@@ -21,6 +21,18 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Header Files\DemoScenes">
+      <UniqueIdentifier>{da623386-a970-4e0c-a59d-96613260dcb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\DemoScenes">
+      <UniqueIdentifier>{89b7db75-3aa2-4a06-908d-fa8a87fe74cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\DemoScenes">
+      <UniqueIdentifier>{83f3a744-cf7d-4358-8e27-70ca9862afde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\DemoScenes\Shaders">
+      <UniqueIdentifier>{ff1c2a77-2aa0-44e6-8e0b-384f444a84c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EditorWindow.h">
@@ -47,15 +59,21 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DemoScenes\DemoScene00_Triangle.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\DemoScenes</Filter>
+    </ClCompile>
+    <ClCompile Include="DemoScenes\DemoScene01_TriangleMovingColored.cpp">
+      <Filter>Source Files\DemoScenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DemoScenes\DemoScene00_Triangle.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\DemoScenes</Filter>
     </ClInclude>
     <ClInclude Include="DemoScenes\IDemoScene.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\DemoScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScenes\DemoScene01_TriangleMovingColored.h">
+      <Filter>Header Files\DemoScenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -65,5 +83,13 @@
     <QtUic Include="EditorControls\EditorMainPage.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DemoScenes\Shaders\DemoScene01_vertex.shader">
+      <Filter>Resource Files\DemoScenes\Shaders</Filter>
+    </None>
+    <None Include="DemoScenes\Shaders\DemoScene01_fragment.shader">
+      <Filter>Resource Files\DemoScenes\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -23,6 +23,7 @@ namespace Pecan {
 		~EditorControlsDialog();
 
 	private slots:
+		/// Slot to be called when the dialog is exited
 		void onExitSlot();
 
 	private:
