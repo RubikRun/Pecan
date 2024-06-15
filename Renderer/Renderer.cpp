@@ -16,16 +16,14 @@ namespace Pecan {
 		return instance;
 	}
 
-	void Renderer::logOpenGLInfo()
-	{
+	void Renderer::logOpenGLInfo() {
 		Renderer* renderer = Renderer::getInstance();
 		PECAN_LOG_INFO("OpenGL Vendor: " << renderer->glGetString(GL_VENDOR));
 		PECAN_LOG_INFO("OpenGL Version: " << renderer->glGetString(GL_VERSION));
 		PECAN_LOG_INFO("OpenGL Renderer: " << renderer->glGetString(GL_RENDERER));
 	}
 
-	unsigned Renderer::compileShader(GLenum shaderType, const char* sourceCode)
-	{
+	unsigned Renderer::compileShader(GLenum shaderType, const char* sourceCode) {
 		Renderer* renderer = Renderer::getInstance();
 		const GLuint shaderID = renderer->glCreateShader(shaderType);
 		renderer->glShaderSource(shaderID, 1, &sourceCode, nullptr);
@@ -41,8 +39,7 @@ namespace Pecan {
 		return shaderID;
 	}
 
-	unsigned Renderer::createShaderProgram(const char* vertexShaderSource, const char* fragmentShaderSource)
-	{
+	unsigned Renderer::createShaderProgram(const char* vertexShaderSource, const char* fragmentShaderSource) {
 		Renderer* renderer = Renderer::getInstance();
 		// Compile shaders
 		const GLuint vertexShaderID = compileShader(GL_VERTEX_SHADER, vertexShaderSource);
@@ -67,8 +64,7 @@ namespace Pecan {
 		return programID;
 	}
 
-	Renderer::Renderer()
-	{
+	Renderer::Renderer() {
 		initializeOpenGLFunctions();
 	}
 

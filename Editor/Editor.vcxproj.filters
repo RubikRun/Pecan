@@ -79,6 +79,9 @@
     <ClCompile Include="EditorControls\EditorDemosPage.cpp">
       <Filter>Source Files\EditorControls</Filter>
     </ClCompile>
+    <ClCompile Include="DemoScenes\DemoScenesRegistry.cpp">
+      <Filter>Source Files\DemoScenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DemoScenes\DemoScene00_Triangle.h">
@@ -88,6 +91,9 @@
       <Filter>Header Files\DemoScenes</Filter>
     </ClInclude>
     <ClInclude Include="DemoScenes\DemoScene01_TriangleMovingColored.h">
+      <Filter>Header Files\DemoScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScenes\DemoScenesRegistry.h">
       <Filter>Header Files\DemoScenes</Filter>
     </ClInclude>
   </ItemGroup>
