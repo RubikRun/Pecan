@@ -130,11 +130,6 @@
     <ClInclude Include="DemoScenes\IDemoScene.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="EditorControls\EditorControlsDialog.ui" />
-    <QtUic Include="EditorControls\EditorDemosPage.ui" />
-    <QtUic Include="EditorControls\EditorMainPage.ui" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="DemoScenes\Shaders\DemoScene01_fragment.shader" />
     <None Include="DemoScenes\Shaders\DemoScene01_vertex.shader" />
   </ItemGroup>

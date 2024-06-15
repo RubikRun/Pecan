@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QWidget>
-#include "ui_EditorMainPage.h"
+#include <QPushButton>
 
 namespace Pecan {
 
@@ -31,8 +31,8 @@ namespace Pecan {
 		/// Slot that's called when the "Demos" button is pressed.
 		void onDemosButtonPressed();
 
-	private: /* variables */
-		Ui::EditorMainPageClass ui;
+	private: /* functions */
+		void setupUi();
 	};
 
 } // namespace Pecan

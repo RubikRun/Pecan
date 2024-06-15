@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QDialog>
-#include "ui_EditorControlsDialog.h"
 
 #include "EditorWindow.h"
 
@@ -36,8 +35,6 @@ namespace Pecan {
 		void setPage(QWidget* page);
 
 	private: /* variables */
-		Ui::EditorControlsDialogClass ui;
-
 		/// Pointer to the editor window that this controls dialog is associated with
 		EditorWindow* editorWindow;
 		/// Pointers to the different pages of the controls dialog

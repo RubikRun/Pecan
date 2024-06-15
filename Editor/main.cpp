@@ -7,7 +7,7 @@ const int WINDOW_POSITION_X = 60;
 const int WINDOW_POSITION_Y = 60;
 const int WINDOW_WIDTH = 800;
 const int WINDOW_HEIGHT = 600;
-const int CONTROLS_WIDTH = 200;
+const int CONTROLS_WIDTH = 300;
 
 int main(int argc, char *argv[])
 {

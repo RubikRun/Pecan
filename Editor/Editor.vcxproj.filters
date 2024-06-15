@@ -98,17 +98,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="EditorControls\EditorControlsDialog.ui">
-      <Filter>Form Files\EditorControls</Filter>
-    </QtUic>
-    <QtUic Include="EditorControls\EditorDemosPage.ui">
-      <Filter>Form Files\EditorControls</Filter>
-    </QtUic>
-    <QtUic Include="EditorControls\EditorMainPage.ui">
-      <Filter>Form Files\EditorControls</Filter>
-    </QtUic>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="DemoScenes\Shaders\DemoScene01_vertex.shader">
       <Filter>Resource Files\DemoScenes\Shaders</Filter>
     </None>

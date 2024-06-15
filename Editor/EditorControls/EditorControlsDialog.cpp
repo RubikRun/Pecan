@@ -13,15 +13,18 @@ namespace Pecan {
 		, mainPage(new EditorMainPage(this))
 		, demosPage(new EditorDemosPage(this))
 	{
-		ui.setupUi(this);
+		// Setup vertical layout
+		QVBoxLayout* layout = new QVBoxLayout(this);
+		setLayout(layout);
+
 		// Connect main page's exit signal with the controls dialog's exit slot
 		connect(mainPage, &EditorMainPage::exitSignal, this, &EditorControlsDialog::onExitSlot);
 		// Connect main page's "go to demos" signal with the controls dialog's "go to demos" slot
 		connect(mainPage, &EditorMainPage::goToDemosPageSignal, this, &EditorControlsDialog::onGoToDemosPageSlot);
 
 		// Add main page and demos page to layout
-		ui.verticalLayout->addWidget(mainPage);
-		ui.verticalLayout->addWidget(demosPage);
+		layout->addWidget(mainPage);
+		layout->addWidget(demosPage);
 		// Hide demos page, only main page should be shown in the beginning
 		demosPage->hide();
 	}

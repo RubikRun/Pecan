@@ -1,7 +1,6 @@
 #pragma once
 
 #include <QWidget>
-#include "ui_EditorDemosPage.h"
 
 namespace Pecan {
 
@@ -17,8 +16,8 @@ namespace Pecan {
 		EditorDemosPage(QWidget* parent = nullptr);
 		~EditorDemosPage();
 
-	private:
-		Ui::EditorDemosPageClass ui;
+	private: /* functions */
+		void setupUi();
 	};
 
 } // namespace Pecan
