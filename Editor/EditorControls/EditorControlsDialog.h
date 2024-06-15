@@ -7,6 +7,9 @@
 
 namespace Pecan {
 
+	class EditorMainPage;
+	class EditorDemosPage;
+
 	/// Dialog with UI controls of Pecan Editor.
 	/// This dialog contains QWidgets used to navigate the editor,
 	/// change parameters, load scenes, export/load files, etc.
@@ -25,12 +28,21 @@ namespace Pecan {
 	private slots:
 		/// Slot to be called when the dialog is exited
 		void onExitSlot();
+		/// Slot to be called when user wants to go to demos page.
+		void onGoToDemosPageSlot();
 
-	private:
+	private: /* functions */
+		/// Sets control dialog's current page.
+		void setPage(QWidget* page);
+
+	private: /* variables */
 		Ui::EditorControlsDialogClass ui;
 
 		/// Pointer to the editor window that this controls dialog is associated with
 		EditorWindow* editorWindow;
+		/// Pointers to the different pages of the controls dialog
+		EditorMainPage* mainPage = nullptr;
+		EditorDemosPage* demosPage = nullptr;
 	};
 
 } // namespace Pecan

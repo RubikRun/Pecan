@@ -114,11 +114,13 @@
     <ClCompile Include="DemoScenes\DemoScene00_Triangle.cpp" />
     <ClCompile Include="DemoScenes\DemoScene01_TriangleMovingColored.cpp" />
     <ClCompile Include="EditorControls\EditorControlsDialog.cpp" />
+    <ClCompile Include="EditorControls\EditorDemosPage.cpp" />
     <ClCompile Include="EditorControls\EditorMainPage.cpp" />
     <ClCompile Include="EditorWindow.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="EditorControls\EditorDemosPage.h" />
     <QtMoc Include="EditorControls\EditorControlsDialog.h" />
     <QtMoc Include="EditorControls\EditorMainPage.h" />
     <ClInclude Include="DemoScenes\DemoScene00_Triangle.h" />
@@ -127,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="EditorControls\EditorControlsDialog.ui" />
+    <QtUic Include="EditorControls\EditorDemosPage.ui" />
     <QtUic Include="EditorControls\EditorMainPage.ui" />
   </ItemGroup>
   <ItemGroup>

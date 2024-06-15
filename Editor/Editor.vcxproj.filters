@@ -33,6 +33,15 @@
     <Filter Include="Resource Files\DemoScenes\Shaders">
       <UniqueIdentifier>{ff1c2a77-2aa0-44e6-8e0b-384f444a84c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\EditorControls">
+      <UniqueIdentifier>{cdb1212b-d798-4472-8696-c206fdb652d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\EditorControls">
+      <UniqueIdentifier>{a5448651-a7f7-420b-b732-465ee3ba1ffe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\EditorControls">
+      <UniqueIdentifier>{5fe49e2d-6fba-455e-ab53-12062336aa9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EditorWindow.h">
@@ -42,20 +51,17 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <QtMoc Include="EditorControls\EditorControlsDialog.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\EditorControls</Filter>
     </QtMoc>
     <QtMoc Include="EditorControls\EditorMainPage.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\EditorControls</Filter>
+    </QtMoc>
+    <QtMoc Include="EditorControls\EditorDemosPage.h">
+      <Filter>Header Files\EditorControls</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EditorControls\EditorControlsDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EditorControls\EditorMainPage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DemoScenes\DemoScene00_Triangle.cpp">
@@ -63,6 +69,15 @@
     </ClCompile>
     <ClCompile Include="DemoScenes\DemoScene01_TriangleMovingColored.cpp">
       <Filter>Source Files\DemoScenes</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorControls\EditorMainPage.cpp">
+      <Filter>Source Files\EditorControls</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorControls\EditorControlsDialog.cpp">
+      <Filter>Source Files\EditorControls</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorControls\EditorDemosPage.cpp">
+      <Filter>Source Files\EditorControls</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,10 +93,13 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="EditorControls\EditorControlsDialog.ui">
-      <Filter>Form Files</Filter>
+      <Filter>Form Files\EditorControls</Filter>
+    </QtUic>
+    <QtUic Include="EditorControls\EditorDemosPage.ui">
+      <Filter>Form Files\EditorControls</Filter>
     </QtUic>
     <QtUic Include="EditorControls\EditorMainPage.ui">
-      <Filter>Form Files</Filter>
+      <Filter>Form Files\EditorControls</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>
