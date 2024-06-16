@@ -21,7 +21,7 @@ namespace Pecan {
 		renderer->glBindVertexArray(vertexArrayObjectID);
 	}
 
-	void DemoScene01_TriangleMovingColored::draw(float time) {
+	void DemoScene01_TriangleMovingColored::_draw(float time) {
 		// Animate background color
 		const GLfloat backgroundColor[] = {
 			sin(time) * 0.5f + 0.5f,

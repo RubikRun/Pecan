@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Renderer.h"
-#include "TimeUtils.h"
 
 #include <QtOpenGL/QOpenGLWindow>
 
@@ -29,8 +28,6 @@ namespace Pecan {
         void paintGL() override;
 
     private: /* variables */
-        /// Timer keeping track of elapsed time since the creation of editor window
-        TimeUtils::Timer timer;
         /// Pointer to the Renderer instance
         Renderer* renderer = nullptr;
         /// Demo scene to be rendered

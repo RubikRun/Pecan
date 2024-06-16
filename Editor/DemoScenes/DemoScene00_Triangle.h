@@ -8,8 +8,8 @@ namespace Pecan {
 	class DemoScene00_Triangle : public IDemoScene
 	{
 		void _setup() override;
+		void _draw(float time) override;
 	public:
-		void draw(float time) override;
 		void cleanup() override;
 	private:
 		unsigned vertexArrayObjectID = 0;

@@ -5,8 +5,7 @@
 
 namespace Pecan {
 
-	EditorWindow::EditorWindow(QWidget* parent)
-	{
+	EditorWindow::EditorWindow(QWidget* parent) {
 		// Specify an OpenGL version
 		QSurfaceFormat format;
 		format.setVersion(4, 5);
@@ -14,8 +13,7 @@ namespace Pecan {
 		setFormat(format);
 	}
 
-	EditorWindow::~EditorWindow()
-	{
+	EditorWindow::~EditorWindow() {
 		if (demoScene) {
 			demoScene->cleanup();
 		}
@@ -47,7 +45,7 @@ namespace Pecan {
 	void EditorWindow::paintGL() {
 		// Draw demo scene
 		if (demoScene) {
-			demoScene->draw(timer.getTime());
+			demoScene->draw();
 		}
 		// Manually call update() so that paintGL() is immediately called again
 		update();

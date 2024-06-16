@@ -26,9 +26,13 @@ namespace Pecan {
 			}
 		}
 
-		TimeUtils::Timer::Timer()
+		Timer::Timer()
 			: startTime(std::chrono::high_resolution_clock::now())
 		{}
+
+		void Timer::reset() {
+			startTime = std::chrono::high_resolution_clock::now();
+		}
 
 		float Timer::getTime(TimeUnit timeUnit) const {
 			const StdTimePoint currentTime = std::chrono::high_resolution_clock::now();

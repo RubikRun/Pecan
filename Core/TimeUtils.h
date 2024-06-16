@@ -21,20 +21,21 @@ namespace Pecan {
 		};
 
 		/// Timer class used to keep track of elapsed time since a given moment.
-		/// When you create a Timer instance, the timer begins to tick immediately.
-		/// At any point you can use the Timer instance to poll the elapsed time since the moment when you created it.
 		class Timer
 		{
 		public:
-			/// Creates a Timer instance. Begins timing immediately.
+			/// Creates a timer. Starts timing immediately
 			Timer();
 
-			/// Returns the currently elapsed time since the creation of the timer.
+			/// Resets timer. Begins from 0 immediately.
+			void reset();
+
+			/// Returns the currently elapsed time since the timer was started.
 			/// @param timeUnit - Time unit in which the elapsed time will be returned
 			/// @return Elapsed time in the given time unit
 			float getTime(TimeUnit timeUnit = TimeUnit::Seconds) const;
 		private:
-			/// Point in time when the Timer instance was created
+			/// Point in time when the timer was started.
 			StdTimePoint startTime;
 		};
 

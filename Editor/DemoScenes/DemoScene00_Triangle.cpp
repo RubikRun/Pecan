@@ -26,7 +26,7 @@ namespace Pecan {
 		renderer->glEnableVertexAttribArray(0);
 	}
 
-	void DemoScene00_Triangle::draw(float time) {
+	void DemoScene00_Triangle::_draw(float time) {
 		// Clear the background
 		renderer->glClear(GL_COLOR_BUFFER_BIT);
 		// Draw triangle

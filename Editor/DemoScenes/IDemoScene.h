@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Renderer.h"
+#include "TimeUtils.h"
 
 namespace Pecan {
 
@@ -14,12 +15,14 @@ namespace Pecan {
 		void setup() {
 			renderer = Renderer::getInstance();
 			_setup();
+			// Begin timer after scene's setup has finished
+			timer.reset();
 		}
 		/// Draw function that draws the scene.
 		/// To be called every frame after loading the scene with setup().
-		/// To be implemented by derived classes with specific functionality.
-		/// @param time - Current time at which the scene should be drawn
-		virtual void draw(float time) = 0;
+		void draw() {
+			_draw(timer.getTime());
+		}
 		/// Cleanup function that unloads the scene.
 		/// To be called once at the end.
 		/// To be implemented by derived classes with specific functionality
@@ -32,6 +35,13 @@ namespace Pecan {
 		/// Setup function that loads the scene.
 		/// To be implemented by derived classes with specific functionality.
 		virtual void _setup() = 0;
+
+		/// Draw function that draws the scene.
+		/// To be implemented by derived classes with specific functionality.
+		/// @param time - Time elapsed since the scene's setup
+		virtual void _draw(float time) = 0;
+		/// Timer keeping track of elapsed time since the demo scene was last setup
+		TimeUtils::Timer timer;
 	};
 
 } // namespace Pecan
