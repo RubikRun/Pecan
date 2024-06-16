@@ -5,6 +5,8 @@
 namespace Pecan {
 
 	void DemoScene00_Triangle::_setup() {
+		// Set clear color to be black
+		renderer->glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		// Create and bind vertex array
 		renderer->glCreateVertexArrays(1, &vertexArrayObjectID);
 		renderer->glBindVertexArray(vertexArrayObjectID);
@@ -25,12 +27,21 @@ namespace Pecan {
 	}
 
 	void DemoScene00_Triangle::draw(float time) {
+		// Clear the background
+		renderer->glClear(GL_COLOR_BUFFER_BIT);
 		// Draw triangle
 		renderer->glDrawArrays(GL_TRIANGLES, 0, 3);
 	}
 
 	void DemoScene00_Triangle::cleanup() {
+		// Delete vertex array and unbind it
 		renderer->glDeleteVertexArrays(1, &vertexArrayObjectID);
+		renderer->glBindVertexArray(0);
+		vertexArrayObjectID = 0;
+		// Delete vertex buffer and unbind it
+		renderer->glDeleteBuffers(1, &vertexBufferObjectID);
+		renderer->glBindBuffer(GL_ARRAY_BUFFER, 0);
+		vertexBufferObjectID = 0;
 	}
 
 } // namespace Pecan

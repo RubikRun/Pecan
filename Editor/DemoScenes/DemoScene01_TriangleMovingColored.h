@@ -13,7 +13,6 @@ namespace Pecan {
 		void cleanup() override;
 	private:
 		unsigned vertexArrayObjectID = 0;
-		unsigned vertexBufferObjectID = 0;
 		unsigned shaderProgramID = 0;
 	};
 

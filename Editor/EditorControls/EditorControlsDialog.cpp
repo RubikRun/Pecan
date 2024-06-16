@@ -21,6 +21,8 @@ namespace Pecan {
 		connect(mainPage, &EditorMainPage::exitSignal, this, &EditorControlsDialog::onExitSlot);
 		// Connect main page's "go to demos" signal with the controls dialog's "go to demos" slot
 		connect(mainPage, &EditorMainPage::goToDemosPageSignal, this, &EditorControlsDialog::onGoToDemosPageSlot);
+		// Connect demo page's "load demo" signal with the controls dialog's "load demo" slot
+		connect(demosPage, &EditorDemosPage::loadDemoSignal, this, &EditorControlsDialog::onLoadDemoSceneSlot);
 
 		// Add main page and demos page to layout
 		layout->addWidget(mainPage);
@@ -44,6 +46,12 @@ namespace Pecan {
 
 	void EditorControlsDialog::onGoToDemosPageSlot() {
 		setPage(demosPage);
+	}
+
+	void EditorControlsDialog::onLoadDemoSceneSlot(int sceneIndex) {
+		if (editorWindow) {
+			editorWindow->loadScene(sceneIndex);
+		}
 	}
 
 	void EditorControlsDialog::setPage(QWidget* page) {

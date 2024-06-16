@@ -39,9 +39,6 @@
     <Filter Include="Source Files\EditorControls">
       <UniqueIdentifier>{a5448651-a7f7-420b-b732-465ee3ba1ffe}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Form Files\EditorControls">
-      <UniqueIdentifier>{5fe49e2d-6fba-455e-ab53-12062336aa9a}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EditorWindow.h">

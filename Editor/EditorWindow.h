@@ -1,13 +1,13 @@
 #pragma once
 
-#include "DemoScenes/DemoScene00_Triangle.h"
-#include "DemoScenes/DemoScene01_TriangleMovingColored.h"
 #include "Renderer.h"
 
 #include <QtOpenGL/QOpenGLWindow>
 #include <chrono>
 
 namespace Pecan {
+
+    class IDemoScene;
 
     /// Main window of Pecan's Editor.
     /// It's a Qt window used for rendering OpenGL graphics.
@@ -20,6 +20,8 @@ namespace Pecan {
     public:
         EditorWindow(QWidget* parent = nullptr);
         ~EditorWindow();
+
+        void loadScene(int sceneIndex);
 
     private: /* functions */
         void initializeGL() override;
@@ -36,7 +38,7 @@ namespace Pecan {
         /// Pointer to the Renderer instance
         Renderer* renderer = nullptr;
         /// Demo scene to be rendered
-        DemoScene01_TriangleMovingColored demoScene;
+        IDemoScene* demoScene = nullptr;
     };
 
 } // namespace Pecan

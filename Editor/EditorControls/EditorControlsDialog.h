@@ -29,6 +29,8 @@ namespace Pecan {
 		void onExitSlot();
 		/// Slot to be called when user wants to go to demos page.
 		void onGoToDemosPageSlot();
+		/// Slot to be called when user wants to load a demo scene
+		void onLoadDemoSceneSlot(int sceneIndex);
 
 	private: /* functions */
 		/// Sets control dialog's current page.

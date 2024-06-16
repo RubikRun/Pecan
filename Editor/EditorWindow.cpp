@@ -1,4 +1,5 @@
 #include "EditorWindow.h"
+#include "DemoScenes/DemoScenesRegistry.h"
 
 #include <QOpenGLContext>
 
@@ -16,7 +17,17 @@ namespace Pecan {
 
 	EditorWindow::~EditorWindow()
 	{
-		demoScene.cleanup();
+		if (demoScene) {
+			demoScene->cleanup();
+		}
+	}
+
+	void EditorWindow::loadScene(int sceneIndex) {
+		if (demoScene) {
+			demoScene->cleanup();
+		}
+		demoScene = DemoScenesRegistry::getInstance()->getScenes()[sceneIndex].scene;
+		demoScene->setup();
 	}
 
 	void EditorWindow::initializeGL() {
@@ -25,7 +36,9 @@ namespace Pecan {
 		// Log OpenGL info
 		Renderer::logOpenGLInfo();
 		// Setup demo scene
-		demoScene.setup();
+		if (demoScene) {
+			demoScene->setup();
+		}
 	}
 
 	void EditorWindow::resizeGL(int w, int h) {
@@ -41,7 +54,9 @@ namespace Pecan {
 
 	void EditorWindow::paintGL() {
 		// Draw demo scene
-		demoScene.draw(getTime());
+		if (demoScene) {
+			demoScene->draw(getTime());
+		}
 		// Manually call update() so that paintGL() is immediately called again
 		update();
 	}

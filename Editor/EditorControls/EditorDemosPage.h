@@ -16,6 +16,12 @@ namespace Pecan {
 		EditorDemosPage(QWidget* parent = nullptr);
 		~EditorDemosPage();
 
+	signals:
+		void loadDemoSignal(int sceneIndex);
+
+	private slots:
+		void onDemoButtonPressed(int sceneIndex);
+
 	private: /* functions */
 		void setupUi();
 	};

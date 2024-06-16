@@ -22,8 +22,6 @@ namespace Pecan {
 	}
 
 	void DemoScene01_TriangleMovingColored::draw(float time) {
-		// Use our shader program
-		renderer->glUseProgram(shaderProgramID);
 		// Animate background color
 		const GLfloat backgroundColor[] = {
 			sin(time) * 0.5f + 0.5f,
@@ -32,6 +30,8 @@ namespace Pecan {
 			1.0f
 		};
 		renderer->glClearBufferfv(GL_COLOR, 0, backgroundColor);
+		// Use our shader program
+		renderer->glUseProgram(shaderProgramID);
 		// Animate offset vertex attribute
 		GLfloat offsetAttribData[] = {
 			sin(time) * 0.3f,
@@ -55,9 +55,14 @@ namespace Pecan {
 	}
 
 	void DemoScene01_TriangleMovingColored::cleanup() {
-		// Delete vertex array object and shader program
+		// Delete vertex array object and unbind it
 		renderer->glDeleteVertexArrays(1, &vertexArrayObjectID);
+		renderer->glBindVertexArray(0);
+		vertexArrayObjectID = 0;
+		// Delete shader program and stop using it
 		renderer->glDeleteProgram(shaderProgramID);
+		renderer->glUseProgram(0);
+		shaderProgramID = 0;
 	}
 
 } // namespace Pecan
