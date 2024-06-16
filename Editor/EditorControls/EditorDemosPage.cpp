@@ -30,7 +30,7 @@ namespace Pecan {
 		QVBoxLayout* layout = new QVBoxLayout(this);
 		setLayout(layout);
 		// Get list of demo scenes
-		const SceneInfoList& scenes = DemoScenesRegistry::getInstance()->getScenes();
+		const SceneInfoList& scenes = DemoScenesRegistry::getScenes();
 		// Loop over demo scenes
 		for (int sceneIdx = 0; sceneIdx < scenes.size(); sceneIdx++) {
 			const SceneInfo& scene = scenes[sceneIdx];

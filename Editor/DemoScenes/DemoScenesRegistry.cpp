@@ -5,24 +5,14 @@
 
 namespace Pecan {
 
-	DemoScenesRegistry* DemoScenesRegistry::instance = nullptr;
-	std::mutex DemoScenesRegistry::mutex;
+	typedef DemoScenesRegistry::SceneInfo SceneInfo;
 
-	DemoScenesRegistry* DemoScenesRegistry::getInstance() {
-		std::lock_guard<std::mutex> lock(mutex);
-		if (instance == nullptr)
-		{
-			instance = new DemoScenesRegistry();
-		}
-		return instance;
-	}
-
-	DemoScenesRegistry::DemoScenesRegistry()
-		// Initialize scenes by hardcoding the names and classes of our existing demo scenes
-		: scenes({
+	const std::vector<SceneInfo>& DemoScenesRegistry::getScenes() {
+		static const std::vector<SceneInfo> scenes = {
 			SceneInfo { "00_Triangle", new DemoScene00_Triangle() },
 			SceneInfo { "01_TriangleMovingColored", new DemoScene01_TriangleMovingColored() }
-		})
-	{}
+		};
+		return scenes;
+	}
 
 } // namespace Pecan

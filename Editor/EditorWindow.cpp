@@ -23,7 +23,7 @@ namespace Pecan {
 		if (demoScene) {
 			demoScene->cleanup();
 		}
-		demoScene = DemoScenesRegistry::getInstance()->getScenes()[sceneIndex].scene;
+		demoScene = DemoScenesRegistry::getScenes()[sceneIndex].scene;
 		demoScene->setup();
 	}
 
