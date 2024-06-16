@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Renderer.h"
+#include "TimeUtils.h"
 
 #include <QtOpenGL/QOpenGLWindow>
-#include <chrono>
 
 namespace Pecan {
 
@@ -28,13 +28,9 @@ namespace Pecan {
         void resizeGL(int w, int h) override;
         void paintGL() override;
 
-        /// Returns the currently elapsed time in seconds, since the construction of this class
-        float getTime() const;
-
     private: /* variables */
-        /// Time when the editor window was opened.
-        /// Used to calculate elapsed time at any given moment.
-        std::chrono::high_resolution_clock::time_point startTime;
+        /// Timer keeping track of elapsed time since the creation of editor window
+        TimeUtils::Timer timer;
         /// Pointer to the Renderer instance
         Renderer* renderer = nullptr;
         /// Demo scene to be rendered

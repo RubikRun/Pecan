@@ -74,9 +74,11 @@
   <ItemGroup>
     <ClInclude Include="FileUtils.h" />
     <ClInclude Include="PecanLogger.h" />
+    <ClInclude Include="TimeUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileUtils.cpp" />
+    <ClCompile Include="TimeUtils.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
