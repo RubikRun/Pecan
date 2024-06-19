@@ -1,5 +1,6 @@
 #include "EditorDemosPage.h"
 #include "DemoScenes/DemoScenesRegistry.h"
+#include "Config/Config.h"
 
 #include <QVBoxLayout>
 #include <QPushButton>
@@ -22,10 +23,6 @@ namespace Pecan {
 	}
 
 	void EditorDemosPage::setupUi() {
-		// TODO: read from config
-		static const QFont font("Calibri Light", 16);
-		static const int minHeight = 50;
-
 		// Setup vertical layout
 		QVBoxLayout* layout = new QVBoxLayout(this);
 		setLayout(layout);
@@ -36,9 +33,9 @@ namespace Pecan {
 			const SceneInfo& scene = scenes[sceneIdx];
 			// For each demo scene, create a button with the scene's name
 			QPushButton* button = new QPushButton(scene.name.c_str(), this);
-			button->setFont(font);
+			button->setFont(Config::getButtonFont());
 			button->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-			button->setMinimumHeight(minHeight);
+			button->setMinimumHeight(Config::getButtonMinHeight());
 			// Connect button's pressed signal with the corresponding slot.
 			// But we cannot connect it directly because we need to pass the index of the demo scene,
 			// so we define a lambda function which captures the index and calls the slot with the index

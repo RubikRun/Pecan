@@ -1,27 +1,32 @@
+#include "Config/Config.h"
 #include "EditorWindow.h"
 #include "EditorControls/EditorControlsDialog.h"
 #include <QtWidgets/QApplication>
 
-// TODO: read from config
-const int WINDOW_POSITION_X = 60;
-const int WINDOW_POSITION_Y = 60;
-const int WINDOW_WIDTH = 800;
-const int WINDOW_HEIGHT = 600;
-const int CONTROLS_WIDTH = 300;
+using namespace Pecan;
 
 int main(int argc, char *argv[])
 {
+    // Initialize config variables
+    Config::init();
+    // Get variables from config that are needed for window positioning and size
+    const int windowPositionX = Config::getWindowPositionX();
+    const int windowPositionY = Config::getWindowPositionY();
+    const int windowWidth = Config::getWindowWidth();
+    const int windowHeight = Config::getWindowHeight();
+    const int controlsDialogWidth = Config::getControlsDialogWidth();
+    // Create a Qt application
     QApplication application(argc, argv);
-
-    Pecan::EditorWindow editorWindow;
-    editorWindow.resize(WINDOW_WIDTH, WINDOW_HEIGHT);
-    editorWindow.setFramePosition(QPoint(WINDOW_POSITION_X, WINDOW_POSITION_Y));
+    // Create an editor window, set its position and size, and show it
+    EditorWindow editorWindow;
+    editorWindow.resize(windowWidth, windowHeight);
+    editorWindow.setFramePosition(QPoint(windowPositionX, windowPositionY));
     editorWindow.show();
-
-    Pecan::EditorControlsDialog editorControlsDialog(&editorWindow);
-    editorControlsDialog.resize(CONTROLS_WIDTH, WINDOW_HEIGHT);
-    editorControlsDialog.move(WINDOW_WIDTH + WINDOW_POSITION_X, WINDOW_POSITION_Y);
+    // Create a dialog with editor's controls, set its position and size, and show it
+    EditorControlsDialog editorControlsDialog(&editorWindow);
+    editorControlsDialog.resize(controlsDialogWidth, windowHeight);
+    editorControlsDialog.move(windowWidth + windowPositionX, windowPositionY);
     editorControlsDialog.show();
-
+    // Run the Qt application showing the window and dialog
     return application.exec();
 }

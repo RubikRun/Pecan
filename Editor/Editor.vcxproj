@@ -111,6 +111,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <QtMoc Include="EditorWindow.h" />
+    <ClCompile Include="Config\Config.cpp" />
     <ClCompile Include="DemoScenes\DemoScenesRegistry.cpp" />
     <ClCompile Include="DemoScenes\DemoScene00_Triangle.cpp" />
     <ClCompile Include="DemoScenes\DemoScene01_TriangleMovingColored.cpp" />
@@ -124,6 +125,7 @@
     <QtMoc Include="EditorControls\EditorDemosPage.h" />
     <QtMoc Include="EditorControls\EditorControlsDialog.h" />
     <QtMoc Include="EditorControls\EditorMainPage.h" />
+    <ClInclude Include="Config\Config.h" />
     <ClInclude Include="DemoScenes\DemoScenesRegistry.h" />
     <ClInclude Include="DemoScenes\DemoScene00_Triangle.h" />
     <ClInclude Include="DemoScenes\DemoScene01_TriangleMovingColored.h" />

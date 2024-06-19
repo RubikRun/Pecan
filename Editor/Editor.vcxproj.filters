@@ -39,6 +39,12 @@
     <Filter Include="Source Files\EditorControls">
       <UniqueIdentifier>{a5448651-a7f7-420b-b732-465ee3ba1ffe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Config">
+      <UniqueIdentifier>{6640dddf-228a-4daa-96de-239cc17fbe7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Config">
+      <UniqueIdentifier>{7f48b196-2f94-409b-b334-7224f3826806}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="EditorWindow.h">
@@ -79,6 +85,9 @@
     <ClCompile Include="DemoScenes\DemoScenesRegistry.cpp">
       <Filter>Source Files\DemoScenes</Filter>
     </ClCompile>
+    <ClCompile Include="Config\Config.cpp">
+      <Filter>Source Files\Config</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DemoScenes\DemoScene00_Triangle.h">
@@ -92,6 +101,9 @@
     </ClInclude>
     <ClInclude Include="DemoScenes\DemoScenesRegistry.h">
       <Filter>Header Files\DemoScenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Config\Config.h">
+      <Filter>Header Files\Config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

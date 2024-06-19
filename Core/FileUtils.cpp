@@ -24,5 +24,28 @@ namespace Pecan {
 			// Return the contents of the string stream as a string
 			return buffer.str();
 		}
+
+		void readTextFileWithPerLineFunc(const char* filepath, const std::function<void(const std::string&)>& perLineFunc) {
+			// Open file stream to the given filepath
+			std::ifstream file(filepath);
+			if (!file.is_open()) {
+				PECAN_LOG_ERROR("Requested text file cannot be opened: " << filepath);
+				return;
+			}
+			// Read from file line by line
+			std::string line;
+			int lineIdx = 0;
+			while (std::getline(file, line)) {
+				// Call the per line function with each line from the file
+				perLineFunc(line);
+				lineIdx++;
+			}
+			// Close file stream
+			file.close();
+			if (file.is_open()) {
+				PECAN_LOG_ERROR("Requested text file cannot be closed: " << filepath);
+			}
+
+		}
 	} // namespace FileUtils
 } // namespace Pecan

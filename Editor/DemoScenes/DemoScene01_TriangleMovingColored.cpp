@@ -2,17 +2,14 @@
 
 #include "Renderer.h"
 #include "FileUtils.h"
+#include "Config/Config.h"
 
 namespace Pecan {
 
-	// TODO: read from config
-	static const char* vertexShaderFilepath = "DemoScenes/Shaders/DemoScene01_vertex.shader";
-	static const char* fragmentShaderFilepath = "DemoScenes/Shaders/DemoScene01_fragment.shader";
-
 	void DemoScene01_TriangleMovingColored::_setup() {
 		// Read vertex shader and fragment shader's source code
-		const std::string vertexShaderSource = FileUtils::readTextFile(vertexShaderFilepath);
-		const std::string fragmentShaderSource = FileUtils::readTextFile(fragmentShaderFilepath);
+		const std::string vertexShaderSource = FileUtils::readTextFile(Config::getVertexShaderFilepath().c_str());
+		const std::string fragmentShaderSource = FileUtils::readTextFile(Config::getFragmentShaderFilepath().c_str());
 		// Create a shader program with the vertex and fragment shader's source code
 		shaderProgramID = Renderer::createShaderProgram(vertexShaderSource.c_str(), fragmentShaderSource.c_str());
 

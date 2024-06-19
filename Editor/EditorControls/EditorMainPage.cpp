@@ -1,4 +1,5 @@
 #include "EditorMainPage.h"
+#include "Config/Config.h"
 
 #include <QVBoxLayout>
 
@@ -23,26 +24,22 @@ namespace Pecan {
 	}
 
 	void EditorMainPage::setupUi() {
-		// TODO: read from config
-		static const QFont font("Calibri Light", 16);
-		static const int minHeight = 50;
-
 		// Setup vertical layout
 		QVBoxLayout* layout = new QVBoxLayout(this);
 		setLayout(layout);
 		// Create "Demos" button
 		QPushButton* demosButton = new QPushButton("Demos", this);
-		demosButton->setFont(font);
+		demosButton->setFont(Config::getButtonFont());
 		demosButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-		demosButton->setMinimumHeight(minHeight);
+		demosButton->setMinimumHeight(Config::getButtonMinHeight());
 		layout->addWidget(demosButton);
 		// Connect the "Demos" button's pressed signal to the corresponding slot
 		connect(demosButton, &QPushButton::pressed, this, &EditorMainPage::onDemosButtonPressed);
 		// Create "Exit" button
 		QPushButton* exitButton = new QPushButton("Exit", this);
-		exitButton->setFont(font);
+		exitButton->setFont(Config::getButtonFont());
 		exitButton->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
-		exitButton->setMinimumHeight(minHeight);
+		exitButton->setMinimumHeight(Config::getButtonMinHeight());
 		layout->addWidget(exitButton);
 		// Connect the "Exit" button's pressed signal to the corresponding slot
 		connect(exitButton, &QPushButton::pressed, this, &EditorMainPage::onExitButtonPressed);
