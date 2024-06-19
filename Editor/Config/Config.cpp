@@ -12,8 +12,10 @@ namespace Pecan {
 	int Config::windowWidth = -1;
 	int Config::windowHeight = -1;
 	int Config::controlsDialogWidth = -1;
-	std::string Config::vertexShaderFilepath;
-	std::string Config::fragmentShaderFilepath;
+	std::string Config::demoScene01_vertexShaderFilepath;
+	std::string Config::demoScene01_fragmentShaderFilepath;
+	std::string Config::demoScene02_vertexShaderFilepath;
+	std::string Config::demoScene02_fragmentShaderFilepath;
 	QFont Config::buttonFont;
 	int Config::buttonMinHeight = -1;
 
@@ -121,8 +123,10 @@ if (varName == #VAR_NAME) { \
 		HANDLE_DECLARATION_INT(windowWidth);
 		HANDLE_DECLARATION_INT(windowHeight);
 		HANDLE_DECLARATION_INT(controlsDialogWidth);
-		HANDLE_DECLARATION_STRING(vertexShaderFilepath);
-		HANDLE_DECLARATION_STRING(fragmentShaderFilepath);
+		HANDLE_DECLARATION_STRING(demoScene01_vertexShaderFilepath);
+		HANDLE_DECLARATION_STRING(demoScene01_fragmentShaderFilepath);
+		HANDLE_DECLARATION_STRING(demoScene02_vertexShaderFilepath);
+		HANDLE_DECLARATION_STRING(demoScene02_fragmentShaderFilepath);
 		HANDLE_DECLARATION_INT(buttonMinHeight);
 		HANDLE_DECLARATION_FONT(buttonFont);
 		// Check if we did find the variable with one of the handling macros

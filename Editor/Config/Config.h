@@ -19,8 +19,10 @@ namespace Pecan {
 		static int getWindowWidth() { return Config::windowWidth; }
 		static int getWindowHeight() { return Config::windowHeight; }
 		static int getControlsDialogWidth() { return Config::controlsDialogWidth; }
-		static const std::string& getVertexShaderFilepath() { return Config::vertexShaderFilepath; }
-		static const std::string& getFragmentShaderFilepath() { return Config::fragmentShaderFilepath; }
+		static const std::string& getDemoScene01_vertexShaderFilepath() { return Config::demoScene01_vertexShaderFilepath; }
+		static const std::string& getDemoScene01_fragmentShaderFilepath() { return Config::demoScene01_fragmentShaderFilepath; }
+		static const std::string& getDemoScene02_vertexShaderFilepath() { return Config::demoScene02_vertexShaderFilepath; }
+		static const std::string& getDemoScene02_fragmentShaderFilepath() { return Config::demoScene02_fragmentShaderFilepath; }
 		static const QFont& getButtonFont() { return Config::buttonFont; }
 		static int getButtonMinHeight() { return Config::buttonMinHeight; }
 
@@ -37,8 +39,10 @@ namespace Pecan {
 		static int windowWidth;
 		static int windowHeight;
 		static int controlsDialogWidth;
-		static std::string vertexShaderFilepath;
-		static std::string fragmentShaderFilepath;
+		static std::string demoScene01_vertexShaderFilepath;
+		static std::string demoScene01_fragmentShaderFilepath;
+		static std::string demoScene02_vertexShaderFilepath;
+		static std::string demoScene02_fragmentShaderFilepath;
 		static QFont buttonFont;
 		static int buttonMinHeight;
 	};

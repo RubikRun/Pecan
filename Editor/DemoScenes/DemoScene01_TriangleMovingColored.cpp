@@ -8,8 +8,8 @@ namespace Pecan {
 
 	void DemoScene01_TriangleMovingColored::_setup() {
 		// Read vertex shader and fragment shader's source code
-		const std::string vertexShaderSource = FileUtils::readTextFile(Config::getVertexShaderFilepath().c_str());
-		const std::string fragmentShaderSource = FileUtils::readTextFile(Config::getFragmentShaderFilepath().c_str());
+		const std::string vertexShaderSource = FileUtils::readTextFile(Config::getDemoScene01_vertexShaderFilepath().c_str());
+		const std::string fragmentShaderSource = FileUtils::readTextFile(Config::getDemoScene01_fragmentShaderFilepath().c_str());
 		// Create a shader program with the vertex and fragment shader's source code
 		shaderProgramID = Renderer::createShaderProgram(vertexShaderSource.c_str(), fragmentShaderSource.c_str());
 

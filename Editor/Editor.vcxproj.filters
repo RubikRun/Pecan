@@ -88,6 +88,9 @@
     <ClCompile Include="Config\Config.cpp">
       <Filter>Source Files\Config</Filter>
     </ClCompile>
+    <ClCompile Include="DemoScenes\DemoScene02_CubeRotatingWithDirectionalLight.cpp">
+      <Filter>Source Files\DemoScenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DemoScenes\DemoScene00_Triangle.h">
@@ -104,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="Config\Config.h">
       <Filter>Header Files\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="DemoScenes\DemoScene02_CubeRotatingWithDirectionalLight.h">
+      <Filter>Header Files\DemoScenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
