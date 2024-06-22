@@ -1,6 +1,7 @@
 #pragma once
 
 #include "DemoScenes/IDemoScene.h"
+#include "Renderer/VertexBuffer.h"
 
 #include <glm/glm.hpp>
 
@@ -21,8 +22,8 @@ namespace Pecan {
 	private:
 		/// ID of OpenGL vertex array
 		unsigned vertexArrayObjectID = 0;
-		/// ID of OpenGL buffer used as vertex buffer
-		unsigned vertexBufferObjectID = 0;
+		/// Vertex buffer for holding vertices data
+		VertexBuffer vertexBuffer;
 		/// ID of OpenGL shader program created from our GLSL shaders
 		unsigned shaderProgramID = 0;
 

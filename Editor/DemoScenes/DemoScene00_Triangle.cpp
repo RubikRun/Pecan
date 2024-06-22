@@ -1,6 +1,6 @@
 #include "DemoScene00_Triangle.h"
 
-#include "Renderer.h"
+#include "Renderer/Renderer.h"
 
 namespace Pecan {
 

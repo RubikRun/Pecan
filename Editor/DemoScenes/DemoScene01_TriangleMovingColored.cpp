@@ -1,6 +1,6 @@
 #include "DemoScene01_TriangleMovingColored.h"
 
-#include "Renderer.h"
+#include "Renderer/Renderer.h"
 #include "FileUtils.h"
 #include "Config/Config.h"
 

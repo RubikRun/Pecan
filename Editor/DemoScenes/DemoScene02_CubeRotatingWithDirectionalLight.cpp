@@ -1,6 +1,6 @@
 #include "DemoScene02_CubeRotatingWithDirectionalLight.h"
 
-#include "Renderer.h"
+#include "Renderer/Renderer.h"
 #include "FileUtils.h"
 #include "Config/Config.h"
 
@@ -65,9 +65,7 @@ namespace Pecan {
 		renderer->glBindVertexArray(0);
 		vertexArrayObjectID = 0;
 		// Delete vertex buffer and unbind it
-		renderer->glDeleteBuffers(1, &vertexBufferObjectID);
-		renderer->glBindBuffer(GL_ARRAY_BUFFER, 0);
-		vertexBufferObjectID = 0;
+		vertexBuffer.destroy();
 		// Delete shader program and stop using it
 		renderer->glDeleteProgram(shaderProgramID);
 		renderer->glUseProgram(0);
@@ -124,10 +122,7 @@ namespace Pecan {
 		renderer->glCreateVertexArrays(1, &vertexArrayObjectID);
 		renderer->glBindVertexArray(vertexArrayObjectID);
 		// Create and bind a vertex buffer
-		renderer->glGenBuffers(1, &vertexBufferObjectID);
-		renderer->glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObjectID);
-		// Fill buffer with cube's vertices
-		renderer->glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		vertexBuffer.create(vertices, sizeof(vertices));
 
 		// Define position attribute
 		renderer->glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), reinterpret_cast<GLvoid*>(0));
