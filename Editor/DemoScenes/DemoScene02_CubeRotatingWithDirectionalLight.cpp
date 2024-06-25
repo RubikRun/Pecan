@@ -7,8 +7,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
-#include "Renderer/VertexBufferLayout.h"
-
 namespace Pecan {
 
 	void DemoScene02_CubeRotatingWithDirectionalLight::_setup() {
@@ -63,11 +61,7 @@ namespace Pecan {
 
 	void DemoScene02_CubeRotatingWithDirectionalLight::cleanup() {
 		// Delete vertex array object and unbind it
-		renderer->glDeleteVertexArrays(1, &vertexArrayObjectID);
-		renderer->glBindVertexArray(0);
-		vertexArrayObjectID = 0;
-		// Delete vertex buffer and unbind it
-		vertexBuffer.destroy();
+		vertexArray.destroy();
 		// Delete shader program and stop using it
 		renderer->glDeleteProgram(shaderProgramID);
 		renderer->glUseProgram(0);
@@ -120,31 +114,20 @@ namespace Pecan {
 			-0.5f,  0.5f,  0.5f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f,
 			-0.5f,  0.5f, -0.5f, 1.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f
 		};
-		// Create and bind a vertex array
-		renderer->glCreateVertexArrays(1, &vertexArrayObjectID);
-		renderer->glBindVertexArray(vertexArrayObjectID);
-		// Create and bind a vertex buffer
-		vertexBuffer.create(vertices, sizeof(vertices));
-
-		VertexBufferLayout layout({
-			{ ShaderDataType::Float3, "position" },
-			{ ShaderDataType::Float3, "color" },
-			{ ShaderDataType::Float3, "normal" }
-		});
-
-		const std::vector<VertexBufferElement>& layoutElements = layout.getElements();
-		for (size_t i = 0; i < layoutElements.size(); i++) {
-			const VertexBufferElement& element = layoutElements[i];
-			renderer->glVertexAttribPointer(
-				i,
-				element.getComponentCount(),
-				Renderer::getShaderDataTypeOpenGLBaseType(element.type),
-				element.normalized ? GL_TRUE : GL_FALSE,
-				layout.getStride(),
-				reinterpret_cast<GLvoid*>(element.offset)
-			);
-			renderer->glEnableVertexAttribArray(i);
-		}
+		// Create a vertex buffer from cube's vertices and describe its layout
+		VertexBufferPtr vertexBuffer = std::make_shared<VertexBuffer>();
+		vertexBuffer->create(
+			vertices,
+			sizeof(vertices),
+			{
+				{ ShaderDataType::Float3, "position" },
+				{ ShaderDataType::Float3, "color" },
+				{ ShaderDataType::Float3, "normal" }
+			}
+		);
+		// Create a vertex array and add vertex buffer to it
+		vertexArray.create();
+		vertexArray.addVertexBuffer(vertexBuffer);
 	}
 
 } // namespace Pecan

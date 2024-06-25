@@ -1,6 +1,7 @@
 #pragma once
 
 #include "DemoScenes/IDemoScene.h"
+#include "Renderer/VertexArray.h"
 
 namespace Pecan {
 
@@ -12,7 +13,7 @@ namespace Pecan {
 	public:
 		void cleanup() override;
 	private:
-		unsigned vertexArrayObjectID = 0;
+		VertexArray vertexArray;
 		unsigned shaderProgramID = 0;
 	};
 

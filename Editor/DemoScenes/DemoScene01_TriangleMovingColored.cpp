@@ -14,8 +14,7 @@ namespace Pecan {
 		shaderProgramID = Renderer::createShaderProgram(vertexShaderSource.c_str(), fragmentShaderSource.c_str());
 
 		// Create and bind a vertex array object
-		renderer->glCreateVertexArrays(1, &vertexArrayObjectID);
-		renderer->glBindVertexArray(vertexArrayObjectID);
+		vertexArray.create();
 	}
 
 	void DemoScene01_TriangleMovingColored::_draw(float time) {
@@ -53,9 +52,7 @@ namespace Pecan {
 
 	void DemoScene01_TriangleMovingColored::cleanup() {
 		// Delete vertex array object and unbind it
-		renderer->glDeleteVertexArrays(1, &vertexArrayObjectID);
-		renderer->glBindVertexArray(0);
-		vertexArrayObjectID = 0;
+		vertexArray.destroy();
 		// Delete shader program and stop using it
 		renderer->glDeleteProgram(shaderProgramID);
 		renderer->glUseProgram(0);

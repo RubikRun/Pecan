@@ -1,7 +1,7 @@
 #pragma once
 
 #include "DemoScenes/IDemoScene.h"
-#include "Renderer/VertexBuffer.h"
+#include "Renderer/VertexArray.h"
 
 #include <glm/glm.hpp>
 
@@ -20,10 +20,8 @@ namespace Pecan {
 		/// Creates vertex array and vertex buffer and fills them with cube's geometry
 		void setupCube();
 	private:
-		/// ID of OpenGL vertex array
-		unsigned vertexArrayObjectID = 0;
-		/// Vertex buffer for holding vertices data
-		VertexBuffer vertexBuffer;
+		/// Vertex array for holding vertex buffers and their layouts
+		VertexArray vertexArray;
 		/// ID of OpenGL shader program created from our GLSL shaders
 		unsigned shaderProgramID = 0;
 
