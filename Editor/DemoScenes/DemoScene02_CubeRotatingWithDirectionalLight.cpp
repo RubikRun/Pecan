@@ -7,6 +7,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "Renderer/VertexBufferLayout.h"
+
 namespace Pecan {
 
 	void DemoScene02_CubeRotatingWithDirectionalLight::_setup() {
@@ -124,18 +126,25 @@ namespace Pecan {
 		// Create and bind a vertex buffer
 		vertexBuffer.create(vertices, sizeof(vertices));
 
-		// Define position attribute
-		renderer->glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), reinterpret_cast<GLvoid*>(0));
-		// Enable position attribute
-		renderer->glEnableVertexAttribArray(0);
-		// Define color attribute
-		renderer->glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), reinterpret_cast<GLvoid*>(3 * sizeof(GLfloat)));
-		// Enable color attribute
-		renderer->glEnableVertexAttribArray(1);
-		// Define normal attribute
-		renderer->glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(GLfloat), reinterpret_cast<GLvoid*>(6 * sizeof(GLfloat)));
-		// Enable normal attribute
-		renderer->glEnableVertexAttribArray(2);
+		VertexBufferLayout layout({
+			{ ShaderDataType::Float3, "position" },
+			{ ShaderDataType::Float3, "color" },
+			{ ShaderDataType::Float3, "normal" }
+		});
+
+		const std::vector<VertexBufferElement>& layoutElements = layout.getElements();
+		for (size_t i = 0; i < layoutElements.size(); i++) {
+			const VertexBufferElement& element = layoutElements[i];
+			renderer->glVertexAttribPointer(
+				i,
+				element.getComponentCount(),
+				Renderer::getShaderDataTypeOpenGLBaseType(element.type),
+				element.normalized ? GL_TRUE : GL_FALSE,
+				layout.getStride(),
+				reinterpret_cast<GLvoid*>(element.offset)
+			);
+			renderer->glEnableVertexAttribArray(i);
+		}
 	}
 
 } // namespace Pecan

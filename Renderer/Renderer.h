@@ -5,6 +5,13 @@
 
 namespace Pecan {
 
+	/// Enum for shader data types that we support in Pecan.
+	/// They are mapped to concrete data types of GLSL, HLSL, etc.
+	enum class ShaderDataType
+	{
+		None = 0, Float = 1, Float2 = 2, Float3 = 3, Float4 = 4, Mat3 = 5, Mat4 = 6, Int = 7, Int2 = 8, Int3 = 9, Int4 = 10, Bool = 11
+	};
+
 	/// Renderer is a thread-safe singleton class responsible for all OpenGL calls
 	class Renderer : public QOpenGLFunctions_4_5_Core
 	{
@@ -30,6 +37,17 @@ namespace Pecan {
 		/// @param fragmentShaderSource - Source code of the fragment shader to be compiled and used in the program
 		/// @return Created shader program's ID
 		static unsigned createShaderProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
+
+		/// Returns the OpenGL base data type corresponding to the given shader data type.
+		/// Here "base type" means that the given shader data type can be multi-component
+		/// and the function will return the type of a single component of that type.
+		static GLenum getShaderDataTypeOpenGLBaseType(ShaderDataType type);
+
+		/// Returns size in bytes of a given shader data type
+		static unsigned getShaderDataTypeSize(ShaderDataType type);
+
+		/// Returns number of components of a given shader data type
+		static unsigned getShaderDataTypeComponentCount(ShaderDataType type);
 
 	private:
 		// Constructor and destructor must be private so that Renderer cannot be instantiated from outside
