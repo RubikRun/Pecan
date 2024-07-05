@@ -112,7 +112,7 @@
   <ItemGroup>
     <QtMoc Include="EditorWindow.h" />
     <ClCompile Include="Config\Config.cpp" />
-    <ClCompile Include="DemoScenes\DemoScene02_CubeRotatingWithDirectionalLight.cpp" />
+    <ClCompile Include="DemoScenes\DemoScene02_CubeRotatingWithPointLight.cpp" />
     <ClCompile Include="DemoScenes\DemoScenesRegistry.cpp" />
     <ClCompile Include="DemoScenes\DemoScene00_Triangle.cpp" />
     <ClCompile Include="DemoScenes\DemoScene01_TriangleMovingColored.cpp" />
@@ -127,7 +127,7 @@
     <QtMoc Include="EditorControls\EditorControlsDialog.h" />
     <QtMoc Include="EditorControls\EditorMainPage.h" />
     <ClInclude Include="Config\Config.h" />
-    <ClInclude Include="DemoScenes\DemoScene02_CubeRotatingWithDirectionalLight.h" />
+    <ClInclude Include="DemoScenes\DemoScene02_CubeRotatingWithPointLight.h" />
     <ClInclude Include="DemoScenes\DemoScenesRegistry.h" />
     <ClInclude Include="DemoScenes\DemoScene00_Triangle.h" />
     <ClInclude Include="DemoScenes\DemoScene01_TriangleMovingColored.h" />
@@ -136,6 +136,8 @@
   <ItemGroup>
     <None Include="DemoScenes\Shaders\DemoScene01_fragment.shader" />
     <None Include="DemoScenes\Shaders\DemoScene01_vertex.shader" />
+    <None Include="DemoScenes\Shaders\DemoScene02_fragment.shader" />
+    <None Include="DemoScenes\Shaders\DemoScene02_vertex.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

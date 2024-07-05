@@ -1,4 +1,4 @@
-#include "DemoScene02_CubeRotatingWithDirectionalLight.h"
+#include "DemoScene02_CubeRotatingWithPointLight.h"
 
 #include "Renderer/Renderer.h"
 #include "FileUtils.h"
@@ -9,7 +9,7 @@
 
 namespace Pecan {
 
-	void DemoScene02_CubeRotatingWithDirectionalLight::_setup() {
+	void DemoScene02_CubeRotatingWithPointLight::_setup() {
 		// Read vertex shader and fragment shader's source code
 		const std::string vertexShaderSource = FileUtils::readTextFile(Config::getDemoScene02_vertexShaderFilepath().c_str());
 		const std::string fragmentShaderSource = FileUtils::readTextFile(Config::getDemoScene02_fragmentShaderFilepath().c_str());
@@ -20,7 +20,7 @@ namespace Pecan {
 		projectionMatrix = glm::perspective(glm::radians(45.0f), float(Config::getWindowWidth()) / float(Config::getWindowHeight()), 0.1f, 100.0f);
 		viewMatrix = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));
 		// Setup light properties
-		lightDir = glm::vec3(1.0f, -1.0f, -1.0f);
+		lightPos = glm::vec3(5.0f, 5.0f, 5.0f);
 		lightColor = glm::vec3(1.0f, 1.0f, 1.0f);
 		lightIntensity = 1.0f;
 
@@ -31,7 +31,7 @@ namespace Pecan {
 		renderer->glEnable(GL_DEPTH_TEST);
 	}
 
-	void DemoScene02_CubeRotatingWithDirectionalLight::_draw(float time) {
+	void DemoScene02_CubeRotatingWithPointLight::_draw(float time) {
 		// Clear with background color and clear depth buffer
 		renderer->glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		// Bind shader program to be used for rendering
@@ -44,7 +44,7 @@ namespace Pecan {
 		shader.setUniformMatrix4fv("u_model", model);
 		shader.setUniformMatrix4fv("u_view", viewMatrix);
 		shader.setUniformMatrix4fv("u_projection", projectionMatrix);
-		shader.setUniform3fv("u_lightDir", lightDir);
+		shader.setUniform3fv("u_lightPos", lightPos);
 		shader.setUniform3fv("u_lightColor", lightColor);
 		shader.setUniform1f("u_lightIntensity", lightIntensity);
 
@@ -52,7 +52,7 @@ namespace Pecan {
 		renderer->glDrawArrays(GL_TRIANGLES, 0, 36);
 	}
 
-	void DemoScene02_CubeRotatingWithDirectionalLight::cleanup() {
+	void DemoScene02_CubeRotatingWithPointLight::cleanup() {
 		// Delete vertex array object and unbind it
 		vertexArray.destroy();
 		// Delete shader program and unbind it
@@ -61,7 +61,7 @@ namespace Pecan {
 		renderer->glDisable(GL_DEPTH_TEST);
 	}
 
-	void DemoScene02_CubeRotatingWithDirectionalLight::setupCube() {
+	void DemoScene02_CubeRotatingWithPointLight::setupCube() {
 		const GLfloat vertices[6 * 6 * 9] = {
 			-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, -1.0f,
 			0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, -1.0f,

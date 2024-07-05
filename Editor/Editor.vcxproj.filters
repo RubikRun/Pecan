@@ -88,7 +88,7 @@
     <ClCompile Include="Config\Config.cpp">
       <Filter>Source Files\Config</Filter>
     </ClCompile>
-    <ClCompile Include="DemoScenes\DemoScene02_CubeRotatingWithDirectionalLight.cpp">
+    <ClCompile Include="DemoScenes\DemoScene02_CubeRotatingWithPointLight.cpp">
       <Filter>Source Files\DemoScenes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -108,7 +108,7 @@
     <ClInclude Include="Config\Config.h">
       <Filter>Header Files\Config</Filter>
     </ClInclude>
-    <ClInclude Include="DemoScenes\DemoScene02_CubeRotatingWithDirectionalLight.h">
+    <ClInclude Include="DemoScenes\DemoScene02_CubeRotatingWithPointLight.h">
       <Filter>Header Files\DemoScenes</Filter>
     </ClInclude>
   </ItemGroup>
@@ -117,6 +117,12 @@
       <Filter>Resource Files\DemoScenes\Shaders</Filter>
     </None>
     <None Include="DemoScenes\Shaders\DemoScene01_fragment.shader">
+      <Filter>Resource Files\DemoScenes\Shaders</Filter>
+    </None>
+    <None Include="DemoScenes\Shaders\DemoScene02_vertex.shader">
+      <Filter>Resource Files\DemoScenes\Shaders</Filter>
+    </None>
+    <None Include="DemoScenes\Shaders\DemoScene02_fragment.shader">
       <Filter>Resource Files\DemoScenes\Shaders</Filter>
     </None>
   </ItemGroup>

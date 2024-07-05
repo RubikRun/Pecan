@@ -2,7 +2,7 @@
 
 #include "DemoScene00_Triangle.h"
 #include "DemoScene01_TriangleMovingColored.h"
-#include "DemoScene02_CubeRotatingWithDirectionalLight.h"
+#include "DemoScene02_CubeRotatingWithPointLight.h"
 
 namespace Pecan {
 
@@ -12,7 +12,7 @@ namespace Pecan {
 		static const std::vector<SceneInfo> scenes = {
 			SceneInfo { "Triangle", new DemoScene00_Triangle() },
 			SceneInfo { "Moving Triangle", new DemoScene01_TriangleMovingColored() },
-			SceneInfo { "Rotating Cube", new DemoScene02_CubeRotatingWithDirectionalLight() }
+			SceneInfo { "Rotating Cube", new DemoScene02_CubeRotatingWithPointLight() }
 		};
 		return scenes;
 	}

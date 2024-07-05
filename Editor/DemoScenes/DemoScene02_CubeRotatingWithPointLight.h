@@ -9,8 +9,8 @@
 namespace Pecan {
 
 	/// Demo scene that renders a rotating cube with different colored faces
-	/// lit by a directional light.
-	class DemoScene02_CubeRotatingWithDirectionalLight : public IDemoScene
+	/// lit by a point light.
+	class DemoScene02_CubeRotatingWithPointLight : public IDemoScene
 	{
 		void _setup() override;
 		void _draw(float time) override;
@@ -31,11 +31,11 @@ namespace Pecan {
 		/// View matrix
 		glm::mat4 viewMatrix;
 
-		/// Direction of directional light
-		glm::vec3 lightDir;
-		/// Color of directional light
+		/// Position of point light
+		glm::vec3 lightPos;
+		/// Color of point light
 		glm::vec3 lightColor;
-		/// Intensity of directional light
+		/// Intensity of point light
 		float lightIntensity;
 	};
 
