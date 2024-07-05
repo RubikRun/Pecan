@@ -18,7 +18,7 @@ void main()
 
     // Diffuse shading
     float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffColor = diff * u_lightColor;
+    vec3 diffColor = diff * u_lightColor * u_lightIntensity;
 
     // Final color
     vec3 result = (diffColor + vec3(0.1)) * vs_color; // Adding ambient lighting

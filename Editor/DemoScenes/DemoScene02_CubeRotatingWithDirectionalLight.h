@@ -2,6 +2,7 @@
 
 #include "DemoScenes/IDemoScene.h"
 #include "Renderer/VertexArray.h"
+#include "Renderer/Shader.h"
 
 #include <glm/glm.hpp>
 
@@ -22,8 +23,8 @@ namespace Pecan {
 	private:
 		/// Vertex array for holding vertex buffers and their layouts
 		VertexArray vertexArray;
-		/// ID of OpenGL shader program created from our GLSL shaders
-		unsigned shaderProgramID = 0;
+		/// Shader program for rendering
+		Shader shader;
 
 		/// Projection matrix
 		glm::mat4 projectionMatrix;

@@ -2,6 +2,7 @@
 
 #include "DemoScenes/IDemoScene.h"
 #include "Renderer/VertexArray.h"
+#include "Renderer/Shader.h"
 
 namespace Pecan {
 
@@ -13,8 +14,10 @@ namespace Pecan {
 	public:
 		void cleanup() override;
 	private:
+		/// Vertex array for holding vertex buffers and their layouts
 		VertexArray vertexArray;
-		unsigned shaderProgramID = 0;
+		/// Shader program for rendering
+		Shader shader;
 	};
 
 } // namespace Pecan

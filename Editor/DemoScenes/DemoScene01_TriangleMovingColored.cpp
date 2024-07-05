@@ -11,7 +11,7 @@ namespace Pecan {
 		const std::string vertexShaderSource = FileUtils::readTextFile(Config::getDemoScene01_vertexShaderFilepath().c_str());
 		const std::string fragmentShaderSource = FileUtils::readTextFile(Config::getDemoScene01_fragmentShaderFilepath().c_str());
 		// Create a shader program with the vertex and fragment shader's source code
-		shaderProgramID = Renderer::createShaderProgram(vertexShaderSource.c_str(), fragmentShaderSource.c_str());
+		shader.create(vertexShaderSource.c_str(), fragmentShaderSource.c_str());
 
 		// Create and bind a vertex array object
 		vertexArray.create();
@@ -26,8 +26,8 @@ namespace Pecan {
 			1.0f
 		};
 		renderer->glClearBufferfv(GL_COLOR, 0, backgroundColor);
-		// Use our shader program
-		renderer->glUseProgram(shaderProgramID);
+		// Bind shader program for rendering
+		shader.bind();
 		// Animate offset vertex attribute
 		GLfloat offsetAttribData[] = {
 			sin(time) * 0.3f,
@@ -53,10 +53,8 @@ namespace Pecan {
 	void DemoScene01_TriangleMovingColored::cleanup() {
 		// Delete vertex array object and unbind it
 		vertexArray.destroy();
-		// Delete shader program and stop using it
-		renderer->glDeleteProgram(shaderProgramID);
-		renderer->glUseProgram(0);
-		shaderProgramID = 0;
+		// Delete shader program and unbind it
+		shader.destroy();
 	}
 
 } // namespace Pecan

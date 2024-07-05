@@ -26,18 +26,6 @@ namespace Pecan {
 		/// Logs info about OpenGL version, vendor, etc.
 		static void logOpenGLInfo();
 
-		/// Compiles given shader's source code.
-		/// @param shaderType - Specifies the type of shader to be compiled
-		/// @param source - Source code of the shader
-		/// @return Compiled shader's ID
-		static unsigned compileShader(GLenum shaderType, const char* sourceCode);
-
-		/// Creates a shader program from given source code of shaders.
-		/// @param vertexShaderSource - Source code of the vertex shader to be compiled and used in the program
-		/// @param fragmentShaderSource - Source code of the fragment shader to be compiled and used in the program
-		/// @return Created shader program's ID
-		static unsigned createShaderProgram(const char* vertexShaderSource, const char* fragmentShaderSource);
-
 		/// Returns the OpenGL base data type corresponding to the given shader data type.
 		/// Here "base type" means that the given shader data type can be multi-component
 		/// and the function will return the type of a single component of that type.
