@@ -1,0 +1,65 @@
+TLDR:
+    Start integrating ImGui to Pecan
+    Delete everything
+    Create new VS solution and project
+    Add ImGui submodule
+    Build and run ImGui example with OpenGL and GLFW
+
+I want to use ImGui instead of Qt for Pecan's UI.
+I created a new branch called
+    imgui_integrate
+Inside of it I deleted everything and created a new Visual Studio solution called
+    Pecan
+with a new project called
+    Editor
+There I first want to run an example with ImGui and understand how it's structured.
+I added ImGui as a submodule in Git under a directory called third_party:
+    git submodule add https://github.com/ocornut/imgui.git third_party/imgui
+and changed to the branch "docking"
+    cd third_party/imgui
+    git checkout docking
+
+For now I am looking at the example Visual Studio project
+    imgui\examples\example_glfw_opengl3\example_glfw_opengl3.vcxproj
+and I am trying to do what it's doing but inside the Editor project.
+1. I created a file
+    main.cpp
+and copied the example source code from
+    imgui\examples\example_glfw_opengl3\main.cpp
+2. I see that there are these include directories in the example project
+    <AdditionalIncludeDirectories>..\..;..\..\backends;..\libs\glfw\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+So I need to add them to my project under C/C++ -> General -> Additional Include Directories
+    $(SolutionDir)\third_party\imgui\examples\libs\glfw\include;
+    $(SolutionDir)\third_party\imgui\backends;
+    $(SolutionDir)\third_party\imgui;
+    %(AdditionalIncludeDirectories)
+( NOTE: not sure if this option is needed, leaving it here if future problems arise: <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>)
+3. I see that there are these additional library directories in the example project
+    <AdditionalLibraryDirectories>..\libs\glfw\lib-vc2010-32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+So I need to add them to my project under Linker -> General -> Additional Library Directories
+    $(SolutionDir)\third_party\imgui\examples\libs\glfw\lib-vc2010-64;
+    %(AdditionalLibraryDirectories)
+4. I see that there are these additional dependencies in the example project
+    <AdditionalDependencies>opengl32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
+So I need to add them to my project under Linker -> Input -> Additional Dependencies
+    opengl32.lib;glfw3.lib;%(AdditionalDependencies)
+5. I see that there are some source files that need to be compiled
+    imgui.cpp, imgui_demo.cpp, imgui_draw.cpp, imgui_tables.cpp, imgui_widgets.cpp, backends\imgui_impl_glfw.cpp, backends\imgui_impl_opengl3.cpp
+and some header files that could be added
+    imconfig.h, imgui.h, imgui_internal.h, backends\imgui_impl_glfw.h, backends\imgui_impl_opengl3.h, backends\imgui_impl_opengl3_loader.h
+So let's add them to the VS project under a Filter
+    third_party/imgui
+They are added to
+    Editor.vcxproj
+but the paths are relative to the Editor directory. I think it's better that they are relative to the solution directory,
+so that if we change the structure of the project, for example move Editor under some other directory, we want these files to still work.
+So let's change all such lines
+    <ClCompile Include="..\third_party\imgui\imgui.cpp" />
+to be like this
+    <ClCompile Include="$(SolutionDir)\third_party\imgui\imgui.cpp" />
+6. I see that there is this ignored specific default library
+    <IgnoreSpecificDefaultLibraries>msvcrt.lib</IgnoreSpecificDefaultLibraries>
+So I will add it to my project under Linker -> Input -> Ignore Specific Default Libraries
+    msvcrt.lib
+
+That's all. It builds and runs now! We have the ImGui demo.

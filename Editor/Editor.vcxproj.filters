@@ -13,5 +13,63 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\third_party">
+      <UniqueIdentifier>{8fd5d177-4533-43a4-8b38-96af6a57b4e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\third_party\imgui">
+      <UniqueIdentifier>{11647cc5-5712-4700-aa31-082aab60c8ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third_party">
+      <UniqueIdentifier>{a70d8a93-24bc-49e7-8267-0cde19e208a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third_party\imgui">
+      <UniqueIdentifier>{23920e60-a305-4bf4-8f6a-da2139320889}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)\third_party\imgui\imgui.cpp">
+      <Filter>Source Files\third_party\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)\third_party\imgui\imgui_demo.cpp">
+      <Filter>Source Files\third_party\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)\third_party\imgui\imgui_draw.cpp">
+      <Filter>Source Files\third_party\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)\third_party\imgui\backends\imgui_impl_glfw.cpp">
+      <Filter>Source Files\third_party\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)\third_party\imgui\backends\imgui_impl_opengl3.cpp">
+      <Filter>Source Files\third_party\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)\third_party\imgui\imgui_tables.cpp">
+      <Filter>Source Files\third_party\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)\third_party\imgui\imgui_widgets.cpp">
+      <Filter>Source Files\third_party\imgui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(SolutionDir)\third_party\imgui\imconfig.h">
+      <Filter>Header Files\third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)\third_party\imgui\imgui.h">
+      <Filter>Header Files\third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)\third_party\imgui\backends\imgui_impl_glfw.h">
+      <Filter>Header Files\third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)\third_party\imgui\backends\imgui_impl_opengl3.h">
+      <Filter>Header Files\third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)\third_party\imgui\backends\imgui_impl_opengl3_loader.h">
+      <Filter>Header Files\third_party\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="$(SolutionDir)\third_party\imgui\imgui_internal.h">
+      <Filter>Header Files\third_party\imgui</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
